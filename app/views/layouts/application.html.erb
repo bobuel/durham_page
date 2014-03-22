@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Durham</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+
+<header>
+	<table class="nav">
+			<tr>
+				<% if current_user %> 
+					<th> <%= link_to current_user.user_email, user_path(current_user) %> </th>
+					<th> <%= link_to "Sign Out", log_out_path %> </th>
+					<th> <%= link_to "My Addresses", user_addresses_path(current_user) %> </th>
+					<th> <%= link_to "My Spaces", user_spaces_path(current_user) %> </th>
+					<th> <%= link_to "All Plants", controller: 'plants', action: 'index' %> </th>
+				<% else %>
+					<th> <%= link_to "Sign In", log_in_path %> </th>
+					<th> <%= link_to "Sign Up", sign_up_path %> </th>
+				<% end %>
+			</tr>
+		</table>	
+</header>
+<body>
+	<div class="flash-messages">
+		<% unless flash.empty? %>
+			Flash Messages: 
+			<% flash.each do |name, msg| -%>
+				<%= content_tag :div, msg, class: name %>
+			<% end %> 
+		<% end %>
+	</div>	
+	<div class="floating">
+		Future Admin Options: <br>
+		<th> <%= link_to "New Plant", new_plant_path %> </th>
+	</div>
+
+<%= yield %>
+
+</body>
+</html>

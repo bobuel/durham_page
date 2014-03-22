@@ -1,0 +1,26 @@
+<%= form_for @plant do |f| %> 
+	<%= f.error_messages %>
+	<p>
+		<%= f.label :name %>
+		<%= f.text_field :name %>
+	</p>
+	<p>
+		<%= f.label :length %>
+		<%= f.number_field :length %>
+	</p>
+	<p>
+		<%= f.label :width %>
+		<%= f.number_field :width %>
+	</p>
+	<p>
+		<%= f.label :height %>
+		<%= f.number_field :height %>
+	</p>
+	<p>
+		<%= f.label :description %>
+		<%= f.text_area  :description %> 
+	</p>
+	<p>
+		<%= f.submit %>
+	</p>
+<% end %> 

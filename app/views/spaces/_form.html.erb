@@ -1,0 +1,42 @@
+<%= form_for [current_user, @space] do |f| %> 
+	<%= f.error_messages %>
+	<p> 
+		<%= f.label :address %>
+		<%= f.collection_select(:address_id, current_user.addresses, :id, :address_1, {}, {multiple: false}) %>
+	</p>
+	<p>
+		<%= f.label :name %>
+		<%= f.text_field :name %>
+	</p>
+	<p>
+		<%= f.label :length %>
+		<%= f.number_field :length %>
+	</p>
+	<p>
+		<%= f.label :width %>
+		<%= f.number_field :width %>
+	</p>
+	<p>
+		<%= f.label :height %>
+		<%= f.number_field :height %>
+	</p>
+	<p>
+		<%= f.label :floor %>
+		<%= f.number_field :floor %>
+	</p>
+	<p>
+		<%= f.label "Is this a rooftop space?" %>
+		<%= f.check_box  :is_rooftop %> 
+	</p>
+	<p>
+		<%= f.label "Is this a ground level space?" %>
+		<%= f.check_box :is_ground %> 
+	</p>
+	<p>
+		<%= f.label :description %>
+		<%= f.text_area :description%> 
+	</p>
+	<p>
+		<%= f.submit %>
+	</p>
+<% end %> 

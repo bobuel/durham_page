@@ -1,0 +1,15 @@
+<h1> Plant Index </h1> 
+
+<table> 
+	<tr>
+		<th> Name </th>
+		<th> Description </th>
+	</tr>
+
+	<% @plants.each do |plant| %>
+		<tr>
+			<td> <%= link_to plant.name, plant_path(plant) %> </td>
+			<td> <%= plant.description %> </td>
+		</tr>
+	<% end %>
+</table>

@@ -1,0 +1,28 @@
+<h1> Sessions Index </h1>
+
+<table>
+	<tr>
+		<th> Session_ID </th>
+		<th> User_ID </th>
+		<th> Log_In_Time </th> 
+		<th> Log_Out_Time </th> 
+		<th> Duration_Seconds </th> 
+		<th> </th>
+		<th> Created_At </th>
+		<th> Updated_At </th>
+	</tr>
+
+<% current_user.sessions.each do |session| %>
+	<tr>
+		<td> <%= session.id %> </td>
+		<td> <%= session.user_id %> </td>
+		<td> <%= session.log_in_time %> </td>
+		<td> <%= session.log_out_time %> </td>
+		<td> <%= session.duration_seconds %> </td>
+		<td> </td>
+		<td> <%= session.created_at %> </td>
+		<td> <%= session.updated_at %> </td>
+	</tr>
+<% end %>
+
+</table>
