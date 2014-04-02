@@ -9,18 +9,31 @@
 
 <header>
 	<table class="nav">
+		<% if current_user %> 
 			<tr>
-				<% if current_user %> 
-					<th> <%= link_to current_user.user_email, user_path(current_user) %> </th>
-					<th> <%= link_to "Sign Out", log_out_path %> </th>
-					<th> <%= link_to "My Addresses", user_addresses_path(current_user) %> </th>
-					<th> <%= link_to "My Spaces", user_spaces_path(current_user) %> </th>
-					<th> <%= link_to "All Plants", controller: 'plants', action: 'index' %> </th>
-				<% else %>
-					<th> <%= link_to "Sign In", log_in_path %> </th>
-					<th> <%= link_to "Sign Up", sign_up_path %> </th>
-				<% end %>
+				<th> <%= link_to current_user.user_email, user_path(current_user) %> </th>
+				<th> <%= link_to "Sign Out", log_out_path %> </th>
+				<th> <%= link_to "My Addresses", user_addresses_path(current_user) %> </th>
+				<th> <%= link_to "My Spaces", user_spaces_path(current_user) %> </th>
 			</tr>
+			<tr>
+				<th> </th>
+				<th> </th>
+				<th> <%= link_to "All Plants", controller: 'plants', action: 'index' %> </th>
+				<th> <%= link_to "All Planters", controller: 'planters', action: 'index' %> </th>
+			</tr>
+			<tr>
+				<th> </th>
+				<th> </th>
+				<th> <%= link_to "New Plant", new_plant_path %> </th>
+				<th> <%= link_to "New Planter", new_planter_path %> </th>
+			</tr>
+		<% else %>
+			<tr>
+				<th> <%= link_to "Sign In", log_in_path %> </th>
+				<th> <%= link_to "Sign Up", sign_up_path %> </th>
+			</tr>
+		<% end %>
 		</table>	
 </header>
 <body>
@@ -32,12 +45,13 @@
 			<% end %> 
 		<% end %>
 	</div>	
-	<div class="floating">
-		Future Admin Options: <br>
-		<th> <%= link_to "New Plant", new_plant_path %> </th>
+
+	<%= yield %>
+
+	<div class="admin">
+		<%= yield :admin_options %>
 	</div>
 
-<%= yield %>
 
 </body>
 </html>

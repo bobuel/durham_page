@@ -10,6 +10,7 @@ Durhampage::Application.routes.draw do
 
   resources :sessions
   resources :plants
+  resources :planters 
   resources :users do 
   	resources :addresses
     resources :spaces 

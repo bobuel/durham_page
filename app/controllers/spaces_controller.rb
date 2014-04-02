@@ -1,4 +1,5 @@
 class SpacesController < ApplicationController
+	before_filter :validate_access, only: [:show, :edit, :update, :destroy]
 
 	def new 
 		@space = Space.new
@@ -51,5 +52,15 @@ class SpacesController < ApplicationController
 
 		def space_params
 			params.require(:space).permit(:address_id, :name, :length, :width, :height, :is_rooftop, :is_ground, :floor, :description)
+		end
+
+		def validate_access
+			@space = Space.find(params[:id])
+
+			if @space.user.id == current_user.id
+				# we good
+			else 
+				redirect_to root_path, notice: "Access Denied" 
+			end
 		end
 end

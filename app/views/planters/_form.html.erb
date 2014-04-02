@@ -1,9 +1,5 @@
-<%= form_for [current_user, @space] do |f| %> 
+<%= form_for @planter do |f| %> 
 	<%= f.error_messages %>
-	<p> 
-		<%= f.label :address %>
-		<%= f.collection_select(:address_id, current_user.addresses, :id, :address_1, {}, {multiple: false}) %>
-	</p>
 	<p>
 		<%= f.label :name %>
 		<%= f.text_field :name %>
@@ -19,18 +15,6 @@
 	<p>
 		<%= f.label "Height in Feet" %>
 		<%= f.number_field :height %>
-	</p>
-	<p>
-		<%= f.label :floor %>
-		<%= f.number_field :floor %>
-	</p>
-	<p>
-		<%= f.label "Is this a rooftop space?" %>
-		<%= f.check_box  :is_rooftop %> 
-	</p>
-	<p>
-		<%= f.label "Is this a ground level space?" %>
-		<%= f.check_box :is_ground %> 
 	</p>
 	<p>
 		<%= f.label :description %>

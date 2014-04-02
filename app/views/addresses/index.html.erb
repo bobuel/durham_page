@@ -4,6 +4,7 @@
 
 <table> 
 	<tr>
+		<th> Name </th>
 		<th> Address Line 1 </th>
 		<th> Address Line 2 </th>
 		<th> City </th>
@@ -15,6 +16,7 @@
 	</tr>
 	<% @addresses.each do |address| %>
 		<tr>
+			<td> <%= address.name %> </td>
 			<td> <%= address.address_1%> </td>
 			<td> <%= address.address_2 %> </td>
 			<td> <%= address.city %> </td>

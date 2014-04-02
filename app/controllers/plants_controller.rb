@@ -21,6 +21,30 @@ class PlantsController < ApplicationController
 		@plants = Plant.all
 	end
 
+	def edit 
+		@plant = Plant.find(params[:id])
+	end
+
+	def update 
+		@plant = Plant.find(params[:id])
+
+		if @plant.update(plant_params)
+			redirect_to @plant, notice: "Update Successful"
+		else
+			redirect_to @plant, notice: "Update Unsuccessful"
+		end
+	end
+
+	def destroy
+		@plant = Plant.find(params[:id])
+
+		if @plant.destroy
+			redirect_to plants_path, notice: "Destroy Successful"
+		else
+			redirect_to @plant, notice: "Destroy Unsuccessful"
+		end
+	end
+
 	private 
 
 		def plant_params

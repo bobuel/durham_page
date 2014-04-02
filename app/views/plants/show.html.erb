@@ -1,3 +1,7 @@
 <h1> Plant Details </h1>
 
 <%= render @plant %>
+
+<% content_for :admin_options do %>
+	<%= link_to "Edit", edit_plant_path(@plant) %> <%= link_to "Delete", plant_path(@plant), method: :delete %>
+<% end %>

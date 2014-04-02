@@ -1,0 +1,21 @@
+<h1> Planters </h1>
+
+<table>
+	<tr>
+		<th> Name </th>
+		<th> Length </th>
+		<th> Width </th>
+		<th> Height </th>
+		<th> Description </th>
+	</tr>
+
+	<% @planters.each do |planter| %>
+		<tr>
+			<td> <%= link_to planter.name, planter_path(planter) %> </td>
+			<td> <%= planter.length %> </td>
+			<td> <%= planter.width %> </td>
+			<td> <%= planter.height %> </td>
+			<td> <%= planter.description %> </td>
+		</tr>
+	<% end %>
+</table> 

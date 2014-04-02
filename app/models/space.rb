@@ -3,7 +3,7 @@ class Space < ActiveRecord::Base
 
 	# Validations 
     validates :address_id, presence: true
-    validates :name, presence: true, uniqueness: true
+    validates :name, presence: true
     validates :length, presence: true
     validates :width, presence: true
     validates :height, presence: true

@@ -2,6 +2,7 @@ class CreateAddresses < ActiveRecord::Migration
   def change
     create_table :addresses do |t|
     	t.belongs_to :user
+        t.string :name
     	t.string :address_1
     	t.string :address_2
     	t.string :city
