@@ -12,4 +12,5 @@ class ApplicationController < ActionController::Base
 	def current_user
 		@current_user ||= User.find_by_user_email(session[:user_email]) if session[:user_email]
 	end
+
 end

@@ -22,12 +22,14 @@
 				<th> <%= link_to "All Plants", controller: 'plants', action: 'index' %> </th>
 				<th> <%= link_to "All Planters", controller: 'planters', action: 'index' %> </th>
 			</tr>
-			<tr>
-				<th> </th>
-				<th> </th>
-				<th> <%= link_to "New Plant", new_plant_path %> </th>
-				<th> <%= link_to "New Planter", new_planter_path %> </th>
-			</tr>
+			<% if current_user.is_admin %> 
+				<tr>
+					<th> </th>
+					<th> </th>
+					<th> <%= link_to "New Plant", new_plant_path %> </th>
+					<th> <%= link_to "New Planter", new_planter_path %> </th>
+				</tr>
+			<% end %>
 		<% else %>
 			<tr>
 				<th> <%= link_to "Sign In", log_in_path %> </th>
@@ -48,10 +50,13 @@
 
 	<%= yield %>
 
-	<div class="admin">
-		<%= yield :admin_options %>
-	</div>
-
+	<% if current_user %>
+		<% if current_user.is_admin %>  
+			<div class="admin">
+				<%= yield :admin_options %>
+			</div>
+		<% end %> 
+	<% end %> 
 
 </body>
 </html>

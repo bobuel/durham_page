@@ -1,9 +1,10 @@
 <div class="planter">
 	<p>
 		Name: <%= @planter.name %> <br>
-		Length: <%= @planter.length %> <br>
-		Width: <%= @planter.width %> <br>
-		Height: <%= @planter.height %> <br>
+		Length: <%= @planter.length_ft %> feet and <%= @planter.length_inch %> inches <br>
+		Width: <%= @planter.width_ft %> feet and <%= @planter.width_inch %> inches <br>
+		Height: <%= @planter.height_ft %> feet and <%= @planter.height_inch %> inches <br>
+		Depth: <%= @planter.depth_ft %> feet and <%= @planter.depth_inch %> inches<br>
 		Description: <%= @planter.description %> <br>
 	</p>
 </div>

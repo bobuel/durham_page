@@ -1,4 +1,8 @@
 <p>
-	<%= user.user_first_name %> <%= user.user_last_name %> at <%= user.user_email %>
+	<%= user.user_first_name %> <%= user.user_last_name %> at <%= user.user_email %> 
+	<br>
+	<% if user.is_admin %> You are an administrator <% end %>
+	<br>
+	<% if user.is_designer %> You are a designer <% end %>
 </p>
 

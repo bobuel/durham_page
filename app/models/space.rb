@@ -1,5 +1,6 @@
 class Space < ActiveRecord::Base
 	belongs_to :address
+	belongs_to :user, through: :address
 
 	# Validations 
     validates :address_id, presence: true

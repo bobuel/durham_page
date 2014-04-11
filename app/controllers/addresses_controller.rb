@@ -56,7 +56,7 @@ class AddressesController < ApplicationController
 		def validate_access
 			@address = Address.find(params[:id])
 
-			if @address.user.id == current_user.id
+			if @address.user_id == current_user.id
 				# we good
 			else 
 				redirect_to root_path, notice: "Access Denied" 

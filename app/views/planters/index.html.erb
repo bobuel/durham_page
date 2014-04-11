@@ -3,18 +3,28 @@
 <table>
 	<tr>
 		<th> Name </th>
-		<th> Length </th>
-		<th> Width </th>
-		<th> Height </th>
+		<th> Length Ft</th>
+		<th> Length Inch</th>
+		<th> Width Ft</th>
+		<th> Width Inch </th>
+		<th> Height Ft</th>
+		<th> Depth Ft </th>
+		<th> Depth Inch </th>
+		<th> Height Inch </th>
 		<th> Description </th>
 	</tr>
 
 	<% @planters.each do |planter| %>
 		<tr>
 			<td> <%= link_to planter.name, planter_path(planter) %> </td>
-			<td> <%= planter.length %> </td>
-			<td> <%= planter.width %> </td>
-			<td> <%= planter.height %> </td>
+			<td> <%= planter.length_ft %> </td>
+			<td> <%= planter.length_inch %> </td>
+			<td> <%= planter.width_ft %> </td>
+			<td> <%= planter.width_inch %> </td>	
+			<td> <%= planter.height_ft %> </td>
+			<td> <%= planter.height_inch %> </td>
+			<td> <%= planter.depth_ft %> </td>
+			<td> <%= planter.depth_inch %> </td>
 			<td> <%= planter.description %> </td>
 		</tr>
 	<% end %>

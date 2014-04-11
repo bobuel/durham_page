@@ -40,7 +40,7 @@ class UsersController < ApplicationController
 	private 
 		def user_params 
 			# whitelist password and password_confirmation, keep has hand salt safe 
-			params.require(:user).permit(:user_email, :user_first_name, :user_last_name, :password, :password_confirmation)
+			params.require(:user).permit(:user_email, :user_first_name, :user_last_name, :is_admin, :is_designer, :password, :password_confirmation)
 		end
 
 		# validate current_user 

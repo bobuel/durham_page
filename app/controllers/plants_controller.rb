@@ -1,4 +1,6 @@
 class PlantsController < ApplicationController
+	before_filter :validate_access, only: [:new, :create, :edit, :update, :destroy] 
+
 	def new 
 		@plant = Plant.new
 	end
@@ -49,5 +51,14 @@ class PlantsController < ApplicationController
 
 		def plant_params
 			params.require(:plant).permit(:name, :length, :width, :height, :area, :volume, :description)
+		end
+
+		def validate_access
+			@current_user = current_user 
+			if @current_user.is_admin
+				# we good
+			else 
+				redirect_to root_path, notice: "Access Denied" 
+			end
 		end
 end
