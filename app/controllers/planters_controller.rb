@@ -1,5 +1,5 @@
 class PlantersController < ApplicationController
-	before_filter :get_planter, only: [:show, :edit, :update, :destroy]
+	before_filter :validate_admin, only: [:new, :create, :edit, :update, :destroy] 
 
 	def new 
 		@planter = Planter.new
@@ -16,15 +16,16 @@ class PlantersController < ApplicationController
 	end
 
 	def show
-		@planter = get_planter
+		@planter = Planter.find(params[:id])
+		@tags = @planter.tags 
 	end
 
 	def edit 
-		@planter = get_planter
+		@planter = Planter.find(params[:id])
 	end
 
 	def update
-		@planter = get_planter
+		@planter = Planter.find(params[:id])
 
 		if @planter.update(planter_params)
 			redirect_to @planter, notice: "Update Successful"
@@ -34,7 +35,7 @@ class PlantersController < ApplicationController
 	end
 
 	def destroy
-		@planter = get_planter
+		@planter = Planter.find(params[:id])
 
 		if @planter.destroy
 			redirect_to planters_path, notice: "Delete Successful"
@@ -50,11 +51,7 @@ class PlantersController < ApplicationController
 	private 
 
 		def planter_params
-			params.require(:planter).permit(:name, :length, :width, :height)
-		end
-
-		def get_planter
-			Planter.find(params[:id])
+			params.require(:planter).permit(:name, :length_ft, :length_inch, :width_ft, :width_inch, :height_ft, :height_inch, :depth_ft, :depth_inch, {tag_ids: []})
 		end
 
 end

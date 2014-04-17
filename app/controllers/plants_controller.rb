@@ -1,5 +1,5 @@
 class PlantsController < ApplicationController
-	before_filter :validate_access, only: [:new, :create, :edit, :update, :destroy] 
+	before_filter :validate_admin, only: [:new, :create, :edit, :update, :destroy] 
 
 	def new 
 		@plant = Plant.new
@@ -17,6 +17,7 @@ class PlantsController < ApplicationController
 
 	def show 
 		@plant = Plant.find(params[:id])
+		@tags = @plant.tags 
 	end
 
 	def index 
@@ -50,15 +51,7 @@ class PlantsController < ApplicationController
 	private 
 
 		def plant_params
-			params.require(:plant).permit(:name, :length, :width, :height, :area, :volume, :description)
+			params.require(:plant).permit(:name, :length_ft, :length_inch, :width_ft, :width_inch, :height_ft, :height_inch, :area_ft, :area_inch, :volume_ft, :volume_inch, :description, {tag_ids: []})
 		end
 
-		def validate_access
-			@current_user = current_user 
-			if @current_user.is_admin
-				# we good
-			else 
-				redirect_to root_path, notice: "Access Denied" 
-			end
-		end
 end

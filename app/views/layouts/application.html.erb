@@ -21,6 +21,8 @@
 				<th> </th>
 				<th> <%= link_to "All Plants", controller: 'plants', action: 'index' %> </th>
 				<th> <%= link_to "All Planters", controller: 'planters', action: 'index' %> </th>
+				<th> <%= link_to "All Tags", controller: 'tags', action: 'index' %> </th>
+				<th> <%= link_to "All Tag Assignments", controller: 'tag_assignments', action: 'index' %> 
 			</tr>
 			<% if current_user.is_admin %> 
 				<tr>
@@ -28,6 +30,7 @@
 					<th> </th>
 					<th> <%= link_to "New Plant", new_plant_path %> </th>
 					<th> <%= link_to "New Planter", new_planter_path %> </th>
+					<th> <%= link_to "New Tag", new_tag_path %> </th>
 				</tr>
 			<% end %>
 		<% else %>

@@ -3,5 +3,9 @@
 <%= render @plant %>
 
 <% content_for :admin_options do %>
+
+	<h3> Tags </h3> 
+	<%= render @tags %>
+
 	<%= link_to "Edit", edit_plant_path(@plant) %> <%= link_to "Delete", plant_path(@plant), method: :delete %>
 <% end %>

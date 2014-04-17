@@ -9,16 +9,21 @@
 		<%= f.text_field :name %>
 	</p>
 	<p>
-		<%= f.label "Length in Feet" %>
+		<%= f.label "Length Feet" %>
 		<%= f.number_field :length_ft %>
-	</p>
+		<%= f.label "Length Inches" %>
+		<%= f.number_field :length_inch %> 
 	<p>
-		<%= f.label "Width in Feet" %>
+		<%= f.label "Width Feet" %>
 		<%= f.number_field :width_ft %>
+		<%= f.label "Width Inches" %>
+		<%= f.number_field :width_inch %>
 	</p>
 	<p>
-		<%= f.label "Height in Feet" %>
+		<%= f.label "Height Feet" %>
 		<%= f.number_field :height_ft %>
+		<%= f.label "Height Inches" %>
+		<%= f.number_field :height_inch %>
 	</p>
 	<p>
 		<%= f.label :floor %>

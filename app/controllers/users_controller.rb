@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-	before_filter :validate_user, only: [:edit, :update, :destroy] 
+	before_filter :validate_access, only: [:edit, :update, :destroy] 
 	before_filter :check_exists, only: [:create]
 
 	def index 
@@ -44,7 +44,7 @@ class UsersController < ApplicationController
 		end
 
 		# validate current_user 
-		def validate_user
+		def validate_access
 			@user = User.find(params[:id])
 			if @user == current_user
 				# we good

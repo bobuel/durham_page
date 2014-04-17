@@ -1,0 +1,17 @@
+<h1> Tag Assignments </h1>
+
+<table>
+	<tr>
+		<th> Tag_ID </th>
+		<th> Plant_ID </th>
+		<th> Planter_ID </th>
+	</tr>
+
+	<% @tag_assignments.each do |tag_assignment| %>
+		<tr>
+			<td> <%= tag_assignment.tag_id %> </td> 
+			<td> <%= tag_assignment.plant_id %> </td>
+			<td> <%= tag_assignment.planter_id %> </td>
+		</tr>
+	<% end %>
+</table>

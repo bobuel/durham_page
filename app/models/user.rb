@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
 	has_many :sessions
 	has_many :addresses, dependent: :destroy
-	has_many :spaces, through: :addresses
+	has_many :spaces, dependent: :destroy
 
 	# security 
 	has_secure_password

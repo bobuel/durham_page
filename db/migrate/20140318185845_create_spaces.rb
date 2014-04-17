@@ -2,6 +2,7 @@ class CreateSpaces < ActiveRecord::Migration
   def change
     create_table :spaces do |t|
     	t.belongs_to :address
+        t.belongs_to :user
     	t.string :name
         t.integer :length_ft
         t.integer :length_inch

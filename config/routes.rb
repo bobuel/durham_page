@@ -11,6 +11,9 @@ Durhampage::Application.routes.draw do
   resources :sessions
   resources :plants
   resources :planters 
+  resources :tags 
+  resources :tag_assignments
+  
   resources :users do 
   	resources :addresses
     resources :spaces 
