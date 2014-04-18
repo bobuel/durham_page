@@ -2,6 +2,8 @@ class Space < ActiveRecord::Base
 	belongs_to :address
     belongs_to :user
 
+    has_many :requests
+
 	# Validations 
     validates :address_id, presence: true
     validates :user_id, presence: true 

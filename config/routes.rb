@@ -17,5 +17,6 @@ Durhampage::Application.routes.draw do
   resources :users do 
   	resources :addresses
     resources :spaces 
+    resources :requests
   end
 end

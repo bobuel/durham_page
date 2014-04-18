@@ -2,6 +2,9 @@ class Plant < ActiveRecord::Base
 
 	has_many :tag_assignments, dependent: :destroy
 	has_many :tags, through: :tag_assignments
+
+	has_many :request_assignments, dependent: :destroy
+	has_many :requests, through: :request_assignments
 	
 	validates :name, presence: true, uniqueness: true
 	validates :description, presence: true

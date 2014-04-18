@@ -15,6 +15,7 @@
 				<th> <%= link_to "Sign Out", log_out_path %> </th>
 				<th> <%= link_to "My Addresses", user_addresses_path(current_user) %> </th>
 				<th> <%= link_to "My Spaces", user_spaces_path(current_user) %> </th>
+				<th> <%= link_to "My Requests", user_requests_path(current_user) %> </th>
 			</tr>
 			<tr>
 				<th> </th>
@@ -63,17 +64,27 @@
 			<%= yield :error_messages %>
 
 		</div>
+
 	</div>
 
-	<%= yield %> 
+	<div class ="content">
 
-	<% if current_user %>
-		<% if current_user.is_admin %>  
-			<div class="admin">
-				<%= yield :admin_options %>
-			</div>
+		<div class="details">
+
+			<%= yield :details %>
+
+		</div>
+		
+		<%= yield %> 
+
+		<% if current_user %>
+			<% if current_user.is_admin %>  
+				<div class="admin">
+					<%= yield :admin_options %>
+				</div>
+			<% end %> 
 		<% end %> 
-	<% end %> 
+	</div> 
 
 </body>
 </html>

@@ -31,6 +31,8 @@ class TagsController < ApplicationController
 
 	def show 
 		@tag = Tag.find(params[:id])
+		@plants = @tag.plants
+		@planters = @tag.planters
 	end
 
 	def index

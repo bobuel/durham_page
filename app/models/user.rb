@@ -1,7 +1,13 @@
 class User < ActiveRecord::Base
+	# session stores activity details
 	has_many :sessions
+
+	# addresses have spaces for planting 
 	has_many :addresses, dependent: :destroy
 	has_many :spaces, dependent: :destroy
+
+	# submits requests 
+	has_many :requests, dependent: :destroy
 
 	# security 
 	has_secure_password

@@ -1,0 +1,18 @@
+<%= form_for [current_user, @request] do |f| %> 
+	<%= f.error_messages %>
+	<p> 
+		<%= f.label :space %>
+		<%= f.collection_select(:space_id, current_user.spaces, :id, :name, {}, {multiple: false}) %>
+	</p>
+	<p> 
+		<%= f.label :request_plants %>
+		<%= f.collection_select(:request_plant_ids, Plant.all, :id, :name, {}, {multiple: true}) %>
+	</p>
+	<p>
+		<%= f.label :description %>
+		<%= f.text_area :description%> 
+	</p>
+	<p>
+		<%= f.submit %>
+	</p>
+<% end %> 

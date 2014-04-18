@@ -2,6 +2,23 @@
 
 <%= render @tag %> 
 
+<% content_for :details do %>
+	<h3> Associated Plants </h3>
+	<ul> 
+		<% @plants.each do |plant| %>
+			<li> <%= plant.name %> </li>
+		<% end %>
+	</ul>
+
+	<h3> Associated Planters </h3>
+
+	<ul>
+		<% @planters.each do |planter| %>
+			<li> <%= planter.name %> </li>
+		<% end %>
+	</ul>
+<% end %>
+
 <% content_for :admin_options do %>
 	<%= link_to "Edit", edit_tag_path(@tag) %> <%= link_to "Delete", tag_path(@tag), method: :delete %> 
 <% end %>

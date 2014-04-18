@@ -1,0 +1,25 @@
+<h1> Requests </h1> 
+
+<table>
+	<tr>
+		<th> Request_ID </th>
+		<th> Request_Date </th>
+		<th> Space_ID </th>
+		<th> Description </th>
+	</tr>
+
+	<% @requests.each do |request| %>
+		<tr>
+			<td> <%= request.id %> </td> 
+			<td> <%= request.created_at %> </td>
+			<td> <%= request.space_id %> </td>
+			<td> <%= request.description %> </td>
+			<td> <%= link_to 'Show', user_request_path(current_user, request) %> </td>
+			<td> <%= link_to 'Edit', edit_user_request_path(current_user, request) %> </td>
+			<td> <%= link_to 'Delete', user_request_path(current_user, request), method: :delete %> </td>
+		</tr>
+	<% end %>
+	<tr>
+		<td> <%= link_to "New Request", new_user_request_path(current_user) %> </td>
+	</tr>
+</table>

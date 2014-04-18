@@ -1,0 +1,13 @@
+<h1> Request </h1>
+
+<%= render @request %>
+
+<% content_for :details do %> 
+	<h3> Requested Plants </h3>
+
+	<ul>
+		<% @plants.each do |plant| %>
+			<li> <%= plant.name %> </li> 
+		<% end %>
+	</ul>
+<% end %>
