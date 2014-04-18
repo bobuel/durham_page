@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
   
   helper_method :current_user
-  helper_method :validate_access
+  helper_method :validate_admin
 
   private 
 
@@ -14,8 +14,7 @@ class ApplicationController < ActionController::Base
 		@current_user ||= User.find_by_user_email(session[:user_email]) if session[:user_email]
 	end
 
-
-	def validate_access
+	def validate_admin
 		@current_user = current_user 
 		if @current_user.is_admin
 			# we good
@@ -23,5 +22,7 @@ class ApplicationController < ActionController::Base
 			redirect_to root_path, notice: "Access Denied" 
 		end
 	end
+
+
 
 end

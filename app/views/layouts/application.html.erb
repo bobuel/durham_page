@@ -42,16 +42,30 @@
 		</table>	
 </header>
 <body>
-	<div class="flash-messages">
-		<% unless flash.empty? %>
-			Flash Messages: 
-			<% flash.each do |name, msg| -%>
-				<%= content_tag :div, msg, class: name %>
-			<% end %> 
-		<% end %>
-	</div>	
+	<div class="messages">
+		<div class="flash-messages">
+			<% unless flash.empty? %>
+				<h3> 
+					Notice!  
+				</h3>
 
-	<%= yield %>
+				<% flash.each do |name, msg| -%>
+					<%= content_tag :div, msg, class: name %>
+				<% end %> 
+			<% end %>
+		</div>	
+
+		<div class="error-messages">
+			<h3> 
+				<%= content_for?(:error_messages) ? 'Did You Know?' : '' %> 
+			</h3>
+
+			<%= yield :error_messages %>
+
+		</div>
+	</div>
+
+	<%= yield %> 
 
 	<% if current_user %>
 		<% if current_user.is_admin %>  

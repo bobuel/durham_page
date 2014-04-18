@@ -11,7 +11,7 @@ class AddressesController < ApplicationController
 		if @address.save
 			redirect_to [current_user, @address], notice: 'Address Created'
 		else
-			redirect_to new_address_path, notice: 'Address Not Saved'
+			render 'new'
 		end
 	end
 
@@ -33,7 +33,7 @@ class AddressesController < ApplicationController
 		if @address.update(address_params)
 			redirect_to @address, notice: 'Update Successful'
 		else
-			redirect_to @address, notice: 'Update Unsuccessful'
+			render 'edit'
 		end
 	end
 

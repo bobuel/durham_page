@@ -41,8 +41,17 @@
  	color: black;
  }
 
- .flash-messages{
- 	float: right;
- }
+.messages{
+	float: right;
+}
+
+.errorExplanation{
+	float: right;
+}
+.field_with_errors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
 
 

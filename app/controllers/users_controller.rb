@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-	before_filter :validate_access, only: [:edit, :update, :destroy] 
+	before_filter :validate_access, only: [:show, :edit, :update, :destroy] 
 	before_filter :check_exists, only: [:create]
 
 	def index 
@@ -49,7 +49,7 @@ class UsersController < ApplicationController
 			if @user == current_user
 				# we good
 			else
-				redirect_to root_url
+				redirect_to root_url, notice: "Only have eyes for yourself"
 			end
 		end
 

@@ -12,7 +12,7 @@ class SpacesController < ApplicationController
 		if @space.save
 			redirect_to [current_user, @space], notice: 'Space Created'
 		else
-			render text: space_params.inspect
+			render 'new'
 		end
 	end
 
