@@ -4,8 +4,9 @@ class CreateRequestAssignments < ActiveRecord::Migration
     	t.belongs_to :request_plant, class_name: 'Plant'
     	t.belongs_to :request
     	t.integer :quantity
-    	t.integer :price_when_requested
-    	t.integer :price_estimate 
+    	t.integer :price_cents_when_requested
+    	t.integer :price_cents_estimate 
+        t.text :description
     	t.timestamps
     end
   end

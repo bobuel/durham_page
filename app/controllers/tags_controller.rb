@@ -11,7 +11,7 @@ class TagsController < ApplicationController
 		if @tag.save 
 			redirect_to @tag, notice: "Create Successful"
 		else
-			redirect_to new_tag_path, notice: "Create Unsuccessful"
+			render 'edit'
 		end
 	end
 
@@ -25,7 +25,7 @@ class TagsController < ApplicationController
 		if @tag.udpate
 			redirect_to @tag, notice: "Update Successful"
 		else
-			redirect_to new_tag_path, notice: "Update Unsuccessful"
+			render 'edit'
 		end
 	end
 
@@ -37,6 +37,16 @@ class TagsController < ApplicationController
 
 	def index
 		@tags = Tag.all
+	end
+
+	def destroy
+		@tag = Tag.find(params[:id])
+
+		if @tag.destroy
+			render 'index', notice: "Destroy Successful"
+		else
+			render 'index', notice: "Destroy Unsuccessful"
+		end
 	end
 
 	private

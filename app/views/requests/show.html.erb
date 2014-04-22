@@ -2,6 +2,8 @@
 
 <%= render @request %>
 
+<%= link_to 'Request Assignments', request_request_assignments_path(@request) %> 
+
 <% content_for :details do %> 
 	<h3> Requested Plants </h3>
 

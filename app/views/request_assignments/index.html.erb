@@ -1,0 +1,28 @@
+<h1> Request Assignment Index </h1>
+
+<table>
+	<tr>
+		<th> Request ID </th>
+		<th> Request Plant ID </th> 
+		<th> Quantity </th>
+		<th> Price When Request </th>
+		<th> Price Estimate </th>
+	</tr>
+
+	<% @request_assignments.each do |request_assignment| %> 
+		<tr>
+			<td> <%= request_assignment.request_id %> </td>
+			<td> <%= request_assignment.request_plant_id %> </td>
+			<td> <%= request_assignment.quantity %> </td>
+			<td> <%= request_assignment.price_cents_when_requested %> </td>
+			<td> <%= request_assignment.price_cents_estimate %> </td>
+			<td> <%= link_to 'Show', request_request_assignment_path(request_assignment.request_id, request_assignment) %> </td>
+			<td> <%= link_to 'Edit', edit_request_request_assignment_path(request_assignment.request_id, request_assignment) %> </td>
+			<td> <%= link_to 'Delete', request_request_assignment_path(request, request_assignment), method: :delete %> </td>
+		</tr>
+	<% end %>
+
+	<tr>
+		<td> <%= link_to 'New Request Assignment', new_request_request_assignment_path(request_id: params[:request_id]) %> </td>
+	</tr>
+</table>

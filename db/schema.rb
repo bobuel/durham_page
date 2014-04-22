@@ -67,8 +67,9 @@ ActiveRecord::Schema.define(version: 20140418130217) do
     t.integer  "request_plant_id"
     t.integer  "request_id"
     t.integer  "quantity"
-    t.integer  "price_when_requested"
-    t.integer  "price_estimate"
+    t.integer  "price_cents_when_requested"
+    t.integer  "price_cents_estimate"
+    t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -76,7 +77,7 @@ ActiveRecord::Schema.define(version: 20140418130217) do
   create_table "requests", force: true do |t|
     t.integer  "user_id"
     t.integer  "space_id"
-    t.text     "description"
+    t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -3,7 +3,7 @@ class CreateRequests < ActiveRecord::Migration
     create_table :requests do |t|
     	t.belongs_to :user
     	t.belongs_to :space
-    	t.text :description
+    	t.string :description
     	t.timestamps
     end
   end

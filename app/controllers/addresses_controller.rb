@@ -41,9 +41,9 @@ class AddressesController < ApplicationController
 		@address = Address.find(params[:id])
 
 		if @address.destroy
-			redirect_to user_addresses_path(current_user), notice: 'Delete Successful'
+			render 'index', notice: "Destroy Successful"
 		else
-			redirect_to user_addresses_path(current_user), notice: 'Delete Unsuccessful'
+			render 'index', notice: "Destroy Unsuccessful"
 		end
 	end
 

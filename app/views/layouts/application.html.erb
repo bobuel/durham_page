@@ -12,28 +12,20 @@
 		<% if current_user %> 
 			<tr>
 				<th> <%= link_to current_user.user_email, user_path(current_user) %> </th>
-				<th> <%= link_to "Sign Out", log_out_path %> </th>
 				<th> <%= link_to "My Addresses", user_addresses_path(current_user) %> </th>
+				<th> <%= link_to "All Plants", controller: 'plants', action: 'index' %> </th>
+			</tr>
+			<tr>
+				<th> <%= link_to "Sign Out", log_out_path %> </th>
 				<th> <%= link_to "My Spaces", user_spaces_path(current_user) %> </th>
-				<th> <%= link_to "My Requests", user_requests_path(current_user) %> </th>
+				<th> <%= link_to "All Planters", controller: 'planters', action: 'index' %> </th>
 			</tr>
 			<tr>
 				<th> </th>
-				<th> </th>
-				<th> <%= link_to "All Plants", controller: 'plants', action: 'index' %> </th>
-				<th> <%= link_to "All Planters", controller: 'planters', action: 'index' %> </th>
+				<th> <%= link_to "My Requests", user_requests_path(current_user) %> </th>
 				<th> <%= link_to "All Tags", controller: 'tags', action: 'index' %> </th>
-				<th> <%= link_to "All Tag Assignments", controller: 'tag_assignments', action: 'index' %> 
 			</tr>
-			<% if current_user.is_admin %> 
-				<tr>
-					<th> </th>
-					<th> </th>
-					<th> <%= link_to "New Plant", new_plant_path %> </th>
-					<th> <%= link_to "New Planter", new_planter_path %> </th>
-					<th> <%= link_to "New Tag", new_tag_path %> </th>
-				</tr>
-			<% end %>
+			<tr> 
 		<% else %>
 			<tr>
 				<th> <%= link_to "Sign In", log_in_path %> </th>
@@ -46,10 +38,7 @@
 	<div class="messages">
 		<div class="flash-messages">
 			<% unless flash.empty? %>
-				<h3> 
-					Notice!  
-				</h3>
-
+				Notice:
 				<% flash.each do |name, msg| -%>
 					<%= content_tag :div, msg, class: name %>
 				<% end %> 
@@ -80,6 +69,7 @@
 		<% if current_user %>
 			<% if current_user.is_admin %>  
 				<div class="admin">
+					<h4> <%= content_for?(:admin_options) ? 'Administrative Options' : '' %> </h4>
 					<%= yield :admin_options %>
 				</div>
 			<% end %> 

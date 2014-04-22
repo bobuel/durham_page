@@ -8,8 +8,13 @@
 
 	<% @plants.each do |plant| %>
 		<tr>
-			<td> <%= link_to plant.name, plant_path(plant) %> </td>
+			<td> <%= plant.name %> </td>
 			<td> <%= plant.description %> </td>
+			<td> <%= link_to 'Show', plant_path(plant) %> </td>
 		</tr>
 	<% end %>
 </table>
+
+<% content_for(:admin_options) do %>
+	<%= link_to "New Plant", new_plant_path %> 
+<% end %>

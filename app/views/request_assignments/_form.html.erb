@@ -1,0 +1,22 @@
+<%= form_for [@request, @request_assignment] do |f| %> 
+	<%= f.error_messages %>
+	<p> 
+		<%= f.label :request %>
+		<%= f.collection_select(:request_id, current_user.requests, :id, :description, {}, {multiple: false}) %>
+	</p>
+	<p> 
+		<%= f.label :request_plant %>
+		<%= f.collection_select(:request_plant_id, Plant.all, :id, :name, {}, {multiple: false}) %>
+	</p>
+	<p>
+		<%= f.label :quantity %>
+		<%= f.number_field :quantity %>
+	</p>
+	<p>
+		<%= f.label :description %>
+		<%= f.text_area :description%> 
+	</p>
+	<p>
+		<%= f.submit %>
+	</p>
+<% end %> 

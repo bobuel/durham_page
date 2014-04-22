@@ -11,7 +11,7 @@ class PlantersController < ApplicationController
 		if @planter.save 
 			redirect_to @planter, notice: "Create Successful"
 		else
-			redirect_to new_planter_path, notice: "Create Unsuccessful"
+			render 'new'
 		end
 	end
 
@@ -30,7 +30,7 @@ class PlantersController < ApplicationController
 		if @planter.update(planter_params)
 			redirect_to @planter, notice: "Update Successful"
 		else
-			redirect_to @planter, notice: "Update Unsucessful"
+			render 'edit'
 		end
 	end
 
@@ -38,9 +38,9 @@ class PlantersController < ApplicationController
 		@planter = Planter.find(params[:id])
 
 		if @planter.destroy
-			redirect_to planters_path, notice: "Delete Successful"
+			render 'index', notice: "Destroy Successful"
 		else
-			redirect_to @planter, notice: "Delete Unsuccessful"
+			render 'index', notice: "Destroy Unsuccessful"
 		end
 	end
 

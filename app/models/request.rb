@@ -1,5 +1,4 @@
 class Request < ActiveRecord::Base
-	before_save :set_values 
 
 	# made by user 
 	belongs_to :user
@@ -11,5 +10,6 @@ class Request < ActiveRecord::Base
 
 	validates :user_id, presence: true 
 	validates :space_id, presence: true 
+	validates :description, presence: true
 
 end

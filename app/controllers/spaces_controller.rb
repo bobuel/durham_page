@@ -34,7 +34,7 @@ class SpacesController < ApplicationController
 		if @space.update(space_params)
 			redirect_to user_spaces_path(current_user), notice: 'Update Successful'
 		else
-			redirect_to user_spaces_path(current_user), notice: 'Update Unsuccessful'
+			render 'edit'
 		end
 	end
 
@@ -42,9 +42,9 @@ class SpacesController < ApplicationController
 		@space = Space.find(params[:id])
 
 		if @space.destroy
-			redirect_to user_spaces_path(current_user), notice: 'Delete Successful'
+			render 'index', notice: 'Delete Successful'
 		else
-			redirect_to user_spaces_path(current_user), notice: 'Delete Unsuccessful'
+			render 'index', notice: 'Delete Unsuccessful'
 		end
 	end
 

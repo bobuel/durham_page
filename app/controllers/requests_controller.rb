@@ -42,16 +42,16 @@ class RequestsController < ApplicationController
 		@request = Request.find(params[:id])
 
 		if @request.destroy
-			redirect_to new_user_request_path(current_user), notice: 'Destroy Successful'
+			render 'index', notice: 'Delete Successful'
 		else
-			redirect_to [current_user, @request], notice: 'Destroy Unsuccessful'
+			render 'index', notice: 'Delete Unsuccessful'
 		end
 	end
 
 	private 
 
 		def request_params
-			params.require(:request).permit(:user_id, :space_id, {request_plant_ids: []})
+			params.require(:request).permit(:user_id, :space_id, :description, {request_plant_ids: []})
 		end
 
 
