@@ -26,6 +26,9 @@
 				<th> <%= link_to "All Tags", controller: 'tags', action: 'index' %> </th>
 			</tr>
 			<tr> 
+				<th> </th>
+				<th> <%= link_to "My Designs", user_designs_path(current_user) %> </th> 
+			</tr>
 		<% else %>
 			<tr>
 				<th> <%= link_to "Sign In", log_in_path %> </th>

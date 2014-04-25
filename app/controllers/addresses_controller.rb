@@ -1,5 +1,5 @@
 class AddressesController < ApplicationController
-	before_filter :validate_access, only: [:show, :edit, :update, :destroy]
+	before_filter :validate_access, except: [:new, :create, :index]
 
 	def new 
 		@address = Address.new
@@ -41,9 +41,9 @@ class AddressesController < ApplicationController
 		@address = Address.find(params[:id])
 
 		if @address.destroy
-			render 'index', notice: "Destroy Successful"
+			redirect_to user_addresses_path(current_user), notice: "Destroy Successful"
 		else
-			render 'index', notice: "Destroy Unsuccessful"
+			redirect_to [current_user, @address], notice: "Destroy Unsuccessful"
 		end
 	end
 
@@ -55,11 +55,6 @@ class AddressesController < ApplicationController
 
 		def validate_access
 			@address = Address.find(params[:id])
-
-			if @address.user_id == current_user.id
-				# we good
-			else 
-				redirect_to root_path, notice: "Access Denied" 
-			end
+			validate_user(@address)
 		end
 end

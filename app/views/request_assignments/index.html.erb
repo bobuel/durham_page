@@ -7,6 +7,7 @@
 		<th> Quantity </th>
 		<th> Price When Request </th>
 		<th> Price Estimate </th>
+		<th> Description </th>
 	</tr>
 
 	<% @request_assignments.each do |request_assignment| %> 
@@ -16,6 +17,7 @@
 			<td> <%= request_assignment.quantity %> </td>
 			<td> <%= request_assignment.price_cents_when_requested %> </td>
 			<td> <%= request_assignment.price_cents_estimate %> </td>
+			<td> <%= request_assignment.description %> </td>
 			<td> <%= link_to 'Show', request_request_assignment_path(request_assignment.request_id, request_assignment) %> </td>
 			<td> <%= link_to 'Edit', edit_request_request_assignment_path(request_assignment.request_id, request_assignment) %> </td>
 			<td> <%= link_to 'Delete', request_request_assignment_path(request, request_assignment), method: :delete %> </td>

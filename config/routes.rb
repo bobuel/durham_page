@@ -10,6 +10,10 @@ Durhampage::Application.routes.draw do
 
   get "users/:user_id/requests/:id/toggle_submit" => "requests#toggle_submit", :as => "request_toggle_submit"
   get "users/:user_id/requests/:id/estimate_price" => "requests#estimate_price", :as => "request_estimate_price"
+  get "users/:user_id/request/:request_id/suggested_designs" => "designs#suggested_designs", :as => "request_suggested_designs"
+  get "users/:user_id/request_assignments/new/:plant_id" => "request_assignments#plant_request_assignment", :as => "plant_request_assignment"
+  get "requests/all_requests" => "requests#all_requests", :as => "all_requests"
+  get "requests/all_submitted_requests" => "requests#all_submitted_requests", :as => "all_submitted_requests"
 
   resources :sessions
   resources :plants
@@ -21,6 +25,7 @@ Durhampage::Application.routes.draw do
   	resources :addresses
     resources :spaces 
     resources :requests
+    resources :designs
   end
 
   resources :requests do 

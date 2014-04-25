@@ -11,6 +11,7 @@
 			<td> <%= plant.name %> </td>
 			<td> <%= plant.description %> </td>
 			<td> <%= link_to 'Show', plant_path(plant) %> </td>
+			<td> <%= link_to 'Request Assignmemt', plant_request_assignment_path(current_user, plant) %> </td>
 		</tr>
 	<% end %>
 </table>

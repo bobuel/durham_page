@@ -32,9 +32,11 @@ class UsersController < ApplicationController
 
 	def destroy
 		@user = User.find(params[:id])
-		@user.destroy
-
-		redirect_to root_url, notice: "User is No Longer"
+		if @user.destroy
+			redirect_to root_url, notice: "User is No Longer"
+		else
+			redirect_to @user, notice: "Guess You Sticking Around"
+		end
 	end
 
 	private 
@@ -46,10 +48,10 @@ class UsersController < ApplicationController
 		# validate current_user 
 		def validate_access
 			@user = User.find(params[:id])
-			if @user == current_user
-				# we good
+			if @user.id = current_user.id 
+				# n/a we good
 			else
-				redirect_to root_url, notice: "Only have eyes for yourself"
+				redirect_to root_url, notice: "Access Denied"
 			end
 		end
 

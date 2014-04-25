@@ -1,0 +1,36 @@
+<h1> Designs Index </h1>
+
+<table>
+	<tr>
+		<th> Design ID </th>
+		<th> User ID </th>
+		<th> Space ID </th>
+		<th> Request ID </th>
+		<th> Description </th>
+		<th> Comments </th>
+		<th> Price Cents </th>
+		<th> Reviewed </th>
+		<th> Accepted </th>
+		<th> Active </th>
+	</tr>
+
+	<% @designs.each do |design| %>
+		<tr>
+			<td> <%= design.id %> </td>
+			<td> <%= design.user_id %> </td>
+			<td> <%= design.space_id %> </td>
+			<td> <%= design.request_id %> </td>
+			<td> <%= design.description %> </td>
+			<td> <%= design.comments %> </td>
+			<td> <%= design.price_cents %> </td>
+			<td> <%= design.reviewed %> </td>
+			<td> <%= design.accepted %> </td>
+			<td> <%= design.active %> </td>
+			<td> <%= link_to 'Show', user_design_path(current_user, design) %> </td>
+		</tr>
+	<% end %>
+</table>
+
+<% content_for(:admin_options) do %>
+	<%= link_to "New Design", new_user_design_path(current_user) %> 
+<% end %>

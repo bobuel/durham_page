@@ -1,7 +1,9 @@
 class RequestsController < ApplicationController
-	before_filter :validate_access, except: [:new, :create, :index]
+	before_filter :validate_access, only: [:show, :edit, :update, :destroy, :toggle_submit]
 
-	before_filter :fetch_request, except: [:new, :create, :index]
+	before_filter :fetch_request, only: [:show, :edit, :update, :destroy, :toggle_submit]
+
+	before_filter :validate_admin, only: [:all_requests, :all_submitted_requests]
 
 	def new 
 		@request = Request.new
@@ -11,10 +13,9 @@ class RequestsController < ApplicationController
 		@request = current_user.requests.build(request_params)
 
 		if @request.save 
-			@request.set_new_bools
 			redirect_to [current_user, @request], notice: 'Create Successful'
 		else
-			render 'index'
+			render user_requests_path(current_user), notice: 'Create Unsuccessful'
 		end
 	end
 
@@ -39,9 +40,9 @@ class RequestsController < ApplicationController
 
 	def destroy
 		if @request.destroy
-			render 'index', notice: 'Delete Successful'
+			redirect_to user_requests_path(current_user), notice: 'Delete Successful'
 		else
-			render 'index', notice: 'Delete Unsuccessful'
+			redirect_to [current_user, @request], notice: 'Delete Unsuccessful'
 		end
 	end
 
@@ -58,6 +59,17 @@ class RequestsController < ApplicationController
 		redirect_to [current_user, @request], notice: msg 
 	end
 
+
+	def all_requests
+		@requests = Request.all
+		render 'index'
+	end
+
+	def all_submitted_requests 
+		@requests = Request.where(submitted: true)
+		render 'index'
+	end
+
 	private 
 
 		def request_params
@@ -67,12 +79,7 @@ class RequestsController < ApplicationController
 
 		def validate_access
 			@request = Request.find(params[:id])
-
-			if @request.user_id == current_user.id
-				# we good
-			else 
-				redirect_to root_path, notice: "Access Denied" 
-			end
+			validate_user(@request)
 		end
 
 		def fetch_request

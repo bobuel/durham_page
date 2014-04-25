@@ -38,9 +38,9 @@ class PlantersController < ApplicationController
 		@planter = Planter.find(params[:id])
 
 		if @planter.destroy
-			render 'index', notice: "Destroy Successful"
+			redirect_to planters_path, notice: "Destroy Successful"
 		else
-			render 'index', notice: "Destroy Unsuccessful"
+			redirect_to planters_path, notice: "Destroy Unsuccessful"
 		end
 	end
 

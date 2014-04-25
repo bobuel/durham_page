@@ -3,14 +3,14 @@ class RequestAssignmentsController < ApplicationController
 
 	def new 
 		@request_assignment = RequestAssignment.new(request_id: params[:request_id])
-		@request = Request.find(params[:request_id])
+		@requests = Request.find(params[:request_id])
 	end
 
 	def create 
 		@request_assignment = RequestAssignment.new(request_assignment_params)
-		@request_assignment.price_cents_when_requested = Plant.find(params[:request_assignment][:request_plant_id]).price_cents
-
+		
 		if @request_assignment.save 
+			@request_assignment.set_price_cents_when_requested(Plant.find(params[:request_assignment][:request_plant_id]).price_cents)
 			@request = Request.find(params[:request_id])
 			redirect_to [@request, @request_assignment], notice: "Created Successfully"
 		else
@@ -35,16 +35,25 @@ class RequestAssignmentsController < ApplicationController
 	end
 
 	def destroy 
+		@request = Request.find(params[:request_id])
 		if @request_assignment.destroy
-			render 'index', notice: 'Delete Successful'
+			redirect_to request_request_assignments_path(@request), notice: 'Delete Successful'
 		else
-			render 'index', notice: 'Delete Unsuccessful'
+			redirect_to request_request_assignments_path(@request), notice: 'Delete Unsuccessful'
 		end
 	end
 
 	def index 
 		@request_assignments = Request.find(params[:request_id]).request_assignments
 	end
+
+	def plant_request_assignment
+		@request = current_user.requests.first
+		@plant = Plant.find(params[:plant_id])
+		@request_assignment = RequestAssignment.new
+		render 'new'
+	end
+
 
 	private
 

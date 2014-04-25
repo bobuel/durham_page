@@ -1,5 +1,7 @@
 class Plant < ActiveRecord::Base
 
+	attr_reader :price
+
 	has_many :tag_assignments, dependent: :destroy
 	has_many :tags, through: :tag_assignments
 
@@ -17,4 +19,6 @@ class Plant < ActiveRecord::Base
 
     validates :height_ft, presence: true, numericality: {only_integer: true, greater_than: 0 }
     validates :height_inch, numericality: {only_integer: true, greater_than: 0, less_than: 13 }
+
+
 end

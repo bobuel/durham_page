@@ -1,0 +1,7 @@
+<h1> Design Details </h1>
+
+<%= render @design %>
+
+<% content_for(:admin_options) do %>
+	<%= link_to "Edit", edit_user_design_path(current_user, @design) %> | <%= link_to "Delete", user_design_path(current_user, @design), method: :delete %> 
+<% end %>

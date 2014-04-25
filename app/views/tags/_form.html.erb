@@ -9,6 +9,10 @@
 		<%= f.text_area :description %>
 	</p>
 	<p>
+		<h3> Assign to Plants </h3>
+		<%= f.collection_select(:plant_ids, Plant.all, :id, :name, {}, {multiple: true}) %>
+	</p>
+	<p>
 		<%= f.submit %>
 	</p>
 <% end %> 

@@ -2,7 +2,9 @@ class Space < ActiveRecord::Base
 	belongs_to :address
     belongs_to :user
 
-    has_many :requests
+    # request and designs are made for spaces 
+    has_many :requests, dependent: :destroy 
+    has_many :designs, dependent: :destroy 
 
 	# Validations 
     validates :address_id, presence: true

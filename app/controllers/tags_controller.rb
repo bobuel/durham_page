@@ -22,7 +22,7 @@ class TagsController < ApplicationController
 	def update 
 		@tag = Tag.find(params[:id])
 
-		if @tag.udpate
+		if @tag.update(tag_params)
 			redirect_to @tag, notice: "Update Successful"
 		else
 			render 'edit'
@@ -43,16 +43,16 @@ class TagsController < ApplicationController
 		@tag = Tag.find(params[:id])
 
 		if @tag.destroy
-			render 'index', notice: "Destroy Successful"
+			redirect_to tags_path, notice: "Destroy Successful"
 		else
-			render 'index', notice: "Destroy Unsuccessful"
+			redirect_to @tag, notice: "Destroy Unsuccessful"
 		end
 	end
 
 	private
 
 		def tag_params
-			params.require(:tag).permit(:name, :description)
+			params.require(:tag).permit(:name, :description, {plant_ids: []}, {planter_ids: []})
 		end
 
 end

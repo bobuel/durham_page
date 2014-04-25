@@ -23,6 +23,9 @@ class ApplicationController < ActionController::Base
 		end
 	end
 
+	def validate_user(object)
+		redirect_to root_path, notice: "Access Denied" unless object.user_id == current_user.id
+	end 
 
 
 end

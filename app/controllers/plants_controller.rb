@@ -42,16 +42,16 @@ class PlantsController < ApplicationController
 		@plant = Plant.find(params[:id])
 
 		if @plant.destroy
-			render 'index', notice: "Destroy Successful"
+			redirect_to plants_path, notice: "Destroy Successful"
 		else
-			render 'index', notice: "Destroy Unsuccessful"
+			redirect_to plants_path, notice: "Destroy Unsuccessful"
 		end
 	end
 
 	private 
 
 		def plant_params
-			params.require(:plant).permit(:name, :length_ft, :length_inch, :width_ft, :width_inch, :height_ft, :height_inch, :area_ft, :area_inch, :volume_ft, :volume_inch, :description, {tag_ids: []})
+			params.require(:plant).permit(:name, :length_ft, :length_inch, :width_ft, :width_inch, :height_ft, :height_inch, :area_ft, :area_inch, :volume_ft, :volume_inch, :description, {tag_ids: []}, :price_cents)
 		end
 
 end

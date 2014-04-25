@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140418130217) do
+ActiveRecord::Schema.define(version: 20140425122944) do
 
   create_table "addresses", force: true do |t|
     t.integer  "user_id"
@@ -21,6 +21,20 @@ ActiveRecord::Schema.define(version: 20140418130217) do
     t.string   "city"
     t.string   "state"
     t.integer  "zip"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "designs", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "space_id"
+    t.integer  "request_id"
+    t.string   "description"
+    t.text     "comments"
+    t.integer  "price_cents"
+    t.boolean  "reviewed",    default: false
+    t.boolean  "accepted",    default: false
+    t.boolean  "active",      default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -78,9 +92,9 @@ ActiveRecord::Schema.define(version: 20140418130217) do
     t.integer  "user_id"
     t.integer  "space_id"
     t.string   "description"
-    t.boolean  "submitted"
-    t.boolean  "viewed"
-    t.boolean  "designed"
+    t.boolean  "submitted",   default: false
+    t.boolean  "viewed",      default: false
+    t.boolean  "designed",    default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

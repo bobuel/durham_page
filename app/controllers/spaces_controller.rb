@@ -1,5 +1,5 @@
 class SpacesController < ApplicationController
-	before_filter :validate_access, only: [:show, :edit, :update, :destroy]
+	before_filter :validate_access, except: [:new, :create, :index]
 
 	def new 
 		@space = Space.new
@@ -42,9 +42,9 @@ class SpacesController < ApplicationController
 		@space = Space.find(params[:id])
 
 		if @space.destroy
-			render 'index', notice: 'Delete Successful'
+			redirect_to user_spaces_path(current_user), notice: 'Delete Successful'
 		else
-			render 'index', notice: 'Delete Unsuccessful'
+			redirect_to user_space_path(current_user, @space), notice: 'Delete Unsuccessful'
 		end
 	end
 
@@ -56,12 +56,7 @@ class SpacesController < ApplicationController
 
 		def validate_access
 			@space = Space.find(params[:id])
-
-			if @space.user_id == current_user.id
-				# we good
-			else 
-				redirect_to root_path, notice: "Access Denied" 
-			end
+			validate_user(@space)
 		end
 
 end
