@@ -8,6 +8,9 @@ Durhampage::Application.routes.draw do
   get "log_out" => "sessions#destroy", :as => "log_out"
   get "log_in" => "sessions#new", :as => "log_in"
 
+  get "users/:user_id/requests/:id/toggle_submit" => "requests#toggle_submit", :as => "request_toggle_submit"
+  get "users/:user_id/requests/:id/estimate_price" => "requests#estimate_price", :as => "request_estimate_price"
+
   resources :sessions
   resources :plants
   resources :planters 
@@ -23,4 +26,6 @@ Durhampage::Application.routes.draw do
   resources :requests do 
     resources :request_assignments 
   end
+
+  
 end

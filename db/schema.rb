@@ -78,6 +78,9 @@ ActiveRecord::Schema.define(version: 20140418130217) do
     t.integer  "user_id"
     t.integer  "space_id"
     t.string   "description"
+    t.boolean  "submitted"
+    t.boolean  "viewed"
+    t.boolean  "designed"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
