@@ -1,0 +1,8 @@
+<% content_for :user_options do %> 
+	<%= link_to "New Request", new_user_request_path(current_user) %>
+<% end %>
+
+<% content_for :admin_options do %>
+		<%= link_to "All Requests", all_requests_path %> | 
+		<%= link_to "All Submitted Requests", all_submitted_requests_path %> 
+<% end %>

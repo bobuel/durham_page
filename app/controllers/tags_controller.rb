@@ -1,5 +1,5 @@
 class TagsController < ApplicationController
-	before_filter :validate_admin
+	before_filter :validate_admin, except: [:index, :show]
 
 	def new 
 		@tag = Tag.new 

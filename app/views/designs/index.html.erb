@@ -31,6 +31,4 @@
 	<% end %>
 </table>
 
-<% content_for(:admin_options) do %>
-	<%= link_to "New Design", new_user_design_path(current_user) %> 
-<% end %>
+<%= render 'design_links' %>

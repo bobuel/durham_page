@@ -7,6 +7,4 @@
 	<%= render @tags %>
 <% end %> 
 
-<% content_for :admin_options do %>
-	<%= link_to "Edit", edit_planter_path(@planter) %> | <%= link_to "Delete", planter_path(@planter), method: :delete %> 
-<% end %>
+<%= render 'planter_options' %>

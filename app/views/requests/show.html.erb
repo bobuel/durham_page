@@ -2,11 +2,7 @@
 
 <%= render @request %>
 
-<%= link_to 'Request Assignments', request_request_assignments_path(@request) %> | 
-<%= link_to 'Estimate Price', request_estimate_price_path(current_user, @request) %> | 
-<%= link_to 'Submit Request', request_toggle_submit_path(current_user, @request) %> |
-<%= link_to 'Designs', request_suggested_designs_path(current_user, @request) %> 
-
+<%= render 'request_options' %>
 
 <% content_for :details do %> 
 	<h3> Requested Plants </h3>

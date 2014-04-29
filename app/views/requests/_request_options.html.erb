@@ -1,0 +1,24 @@
+<% content_for :user_options do %> 
+	| <%= link_to 'Request Assignments', request_request_assignments_path(@request) %>  
+	| <%= link_to 'Estimate Price', request_estimate_price_path(current_user, @request) %>  
+	| <%= link_to 'Submit Request', request_toggle_submitted_path(current_user, @request) %> 
+
+	<% if @request.designed %> 
+		| <%= link_to 'Designs', request_suggested_designs_path(current_user, @request) %> 
+	<% end %> 
+	|
+<% end %>
+
+<% content_for :admin_options do %>
+	<% if @request.submitted %>
+		| <%= link_to "Toggle Viewed", request_toggle_viewed_path(@request) %> 
+	<% end %> 
+
+	<% if @request.viewed %>
+		| <%= link_to "Toggle Designed", request_toggle_designed_path(@request) %> 
+	<% end %>
+
+	| <%= link_to 'Edit', edit_user_request_path(current_user, @request) %> 
+	| <%= link_to 'Delete', user_request_path(current_user, @request), method: :delete %> 
+	|
+<% end %> 

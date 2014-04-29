@@ -31,6 +31,4 @@
 	<% end %>
 </table> 
 
-<% content_for(:admin_options) do %>
-	<%= link_to "New Planter", new_planter_path %>
-<% end %>
+<%= render 'planter_links' %>

@@ -15,6 +15,4 @@
 	<% end %>
 </table>
 
-<% content_for(:admin_options) do %>
-	<%= link_to "New Tag", new_tag_path %> | <%= link_to "All Tag Assignments", controller: 'tag_assignments', action: 'index' %>
-<% end %>
+<%= render 'tag_links' %>

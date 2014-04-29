@@ -16,7 +16,7 @@ class Request < ActiveRecord::Base
 	validates :space_id, presence: true 
 	validates :description, presence: true
 	
-	def toggle_submit 
+	def toggle_submitted
 		self.submitted = true
 		if save 
 			true
@@ -25,14 +25,22 @@ class Request < ActiveRecord::Base
 		end
 	end
 
-	def toggle_viewed 
+	def toggle_viewed
 		self.viewed = true
-		save
+		if save
+			true
+		else
+			false
+		end
 	end
 
 	def toggle_designed
 		self.designed = true
-		save
+		if save
+			true
+		else
+			false
+		end
 	end
 
 	def estimate_price_cents 

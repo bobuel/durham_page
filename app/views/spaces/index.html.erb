@@ -36,10 +36,9 @@
 			<td> <%= link_to 'Delete', user_space_path(current_user, space), method: :delete %> </td>
 		</tr>
 	<% end %>
-	<tr>
-		<td> <%= link_to "New Space", new_user_space_path(current_user) %> </td>
-	</tr>
 </table>
+
+<%= render 'space_links' %> 
 
 
 

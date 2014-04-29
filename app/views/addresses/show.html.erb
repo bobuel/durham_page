@@ -2,9 +2,11 @@
 
 <%= render @address %>
 
-<h3> Spaces </h3>
-<ul>
-	<% @address.spaces.each do |space| %>
-		<li> <%= link_to space.name, user_space_path(current_user, space) %> </li>
-	<% end %>
-</ul>
+<% content_for :details do %> 
+	<h3> Spaces </h3>
+	<ul>
+		<% @address.spaces.each do |space| %>
+			<li> <%= link_to space.name, user_space_path(current_user, space) %> </li>
+		<% end %>
+	</ul>
+<% end %> 

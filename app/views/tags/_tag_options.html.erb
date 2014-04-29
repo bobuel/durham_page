@@ -1,0 +1,8 @@
+<% content_for :user_options do %>
+	<%= link_to "Create Request from Tag", new_request_from_tag_path(current_user, @tag) %> 
+<% end %>
+
+<% content_for :admin_options do %>
+	<%= link_to "Edit", edit_tag_path(@tag) %> | 
+	<%= link_to "Delete", tag_path(@tag), method: :delete %> 
+<% end %>

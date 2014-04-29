@@ -3,6 +3,9 @@ class Planter < ActiveRecord::Base
 	has_many :tag_assignments, dependent: :destroy
 	has_many :tags, through: :tag_assignments
 
+    has_many :design_assignments, dependent: :destroy, foreign_key: 'design_planter_id'
+    has_many :designs, through: :design_assignments
+
     validates :name, presence: true
 
     validates :length_ft, presence: true, numericality: {only_integer: true, greater_than: 0 }

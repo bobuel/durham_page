@@ -12,22 +12,22 @@
 		<% if current_user %> 
 			<tr>
 				<th> <%= link_to current_user.user_email, user_path(current_user) %> </th>
-				<th> <%= link_to "My Addresses", user_addresses_path(current_user) %> </th>
-				<th> <%= link_to "All Plants", controller: 'plants', action: 'index' %> </th>
+				<th> <%= link_to "Addresses", user_addresses_path(current_user) %> </th>
+				<th> <%= link_to "Plants", controller: 'plants', action: 'index' %> </th>
 			</tr>
 			<tr>
 				<th> <%= link_to "Sign Out", log_out_path %> </th>
-				<th> <%= link_to "My Spaces", user_spaces_path(current_user) %> </th>
-				<th> <%= link_to "All Planters", controller: 'planters', action: 'index' %> </th>
+				<th> <%= link_to "Spaces", user_spaces_path(current_user) %> </th>
+				<th> <%= link_to "Planters", controller: 'planters', action: 'index' %> </th>
 			</tr>
 			<tr>
 				<th> </th>
-				<th> <%= link_to "My Requests", user_requests_path(current_user) %> </th>
-				<th> <%= link_to "All Tags", controller: 'tags', action: 'index' %> </th>
+				<th> <%= link_to "Requests", user_requests_path(current_user) %> </th>
+				<th> <%= link_to "Tags", controller: 'tags', action: 'index' %> </th>
 			</tr>
 			<tr> 
 				<th> </th>
-				<th> <%= link_to "My Designs", user_designs_path(current_user) %> </th> 
+				<th> <%= link_to "Designs", user_designs_path(current_user) %> </th> 
 			</tr>
 		<% else %>
 			<tr>
@@ -68,6 +68,10 @@
 		</div>
 		
 		<%= yield %> 
+
+		<h4> <%= content_for?(:user_options) ? 'Options' : ''%> </h4>
+		
+		<%= yield :user_options %> 
 
 		<% if current_user %>
 			<% if current_user.is_admin %>  

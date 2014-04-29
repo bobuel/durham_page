@@ -1,9 +1,7 @@
 class RequestsController < ApplicationController
-	before_filter :validate_access, only: [:show, :edit, :update, :destroy, :toggle_submit]
+	before_filter :fetch_request, :validate_access, only: [:show, :edit, :update, :destroy, :toggle_submitted, :toggle_viewed, :toggle_designed, :estimate_price]
 
-	before_filter :fetch_request, only: [:show, :edit, :update, :destroy, :toggle_submit]
-
-	before_filter :validate_admin, only: [:all_requests, :all_submitted_requests]
+	before_filter :validate_admin, only: [:all_requests, :all_submitted_requests, :toggle_viewed, :toggle_designed]
 
 	def new 
 		@request = Request.new
@@ -46,11 +44,27 @@ class RequestsController < ApplicationController
 		end
 	end
 
-	def toggle_submit
-		if @request.toggle_submit
+	def toggle_submitted
+		if @request.toggle_submitted
 			redirect_to [current_user, @request], notice: 'Request Submitted'
 		else
-			redirect_to user_requests_path(current_user)
+			redirect_to user_requests_path(current_user), notice: 'Request Not Submitted'
+		end
+	end
+
+	def toggle_viewed
+		if @request.toggle_viewed
+			redirect_to [current_user, @request], notice: 'Request Viewed'
+		else
+			redirect_to user_requests_path(current_user), notice: 'Request Not Viewed'
+		end
+	end
+
+	def toggle_designed
+		if @request.toggle_designed
+			redirect_to [current_user, @request], notice: 'Request Designed'
+		else
+			redirect_to user_requests_path(current_user), notice: 'Request Not Designed'
 		end
 	end
 
@@ -70,16 +84,22 @@ class RequestsController < ApplicationController
 		render 'index'
 	end
 
+	def new_request_from_tag
+		@tag = Tag.find(params[:tag_id])
+		@request_plants = @tag.plants
+		@request = Request.new
+		render 'new'
+	end
+
 	private 
 
 		def request_params
 			params.require(:request).permit(:user_id, :space_id, :description, {request_plant_ids: []}, :submitted, :viewed, :designed)
 		end
 
-
 		def validate_access
 			@request = Request.find(params[:id])
-			validate_user(@request)
+			validate_user_bln(@request) || validate_admin_bln
 		end
 
 		def fetch_request

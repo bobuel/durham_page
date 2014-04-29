@@ -7,6 +7,9 @@ class Plant < ActiveRecord::Base
 
 	has_many :request_assignments, dependent: :destroy, foreign_key: "request_plant_id"
 	has_many :requests, through: :request_assignments
+
+	has_many :design_assignments, dependent: :destroy, foreign_key: "design_plant_id"
+	has_many :designs, through: :design_assignments
 	
 	validates :name, presence: true, uniqueness: true
 	validates :description, presence: true

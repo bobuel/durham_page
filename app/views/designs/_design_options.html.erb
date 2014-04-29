@@ -1,0 +1,22 @@
+<% content_for :user_options do %> 
+	| <%= link_to "Design Assignments", design_design_assignments_path(@design) %> 
+
+	<% if @design.active %>
+		| <%= link_to "Toggle Reviewed", design_toggle_reviewed_path(@design) %> 
+	<% end %> 
+
+	<% if @design.reviewed %>
+		| <%= link_to "Toggle Accepted", design_toggle_accepted_path(@design) %>
+	<% end %>
+
+	|
+
+<% end %>
+
+
+<% content_for :admin_options do %>
+	| <%= link_to "Toggle Active", design_toggle_active_path(@design) %> 
+	| <%= link_to "Edit", edit_user_design_path(current_user, @design) %> 
+	| <%= link_to "Delete", user_design_path(current_user, @design), method: :delete %> 
+	|
+<% end %>

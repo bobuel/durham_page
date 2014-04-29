@@ -1,0 +1,6 @@
+<% content_for :user_options do %>
+	<%= link_to 'Edit', edit_request_request_assignment_path(@request_assignment.request_id, @request_assignment) %> |
+	<%= link_to 'Delete', request_request_assignment_path(@request_assignment.request_id, @request_assignment), method: :delete %> |
+	<%= link_to 'Associated Request', user_request_path(current_user, @request_assignment.request_id) %> |
+	<%= link_to 'Associated Assignments', request_request_assignments_path(@request_assignment.request_id) %> 
+<% end %>

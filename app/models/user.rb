@@ -9,8 +9,13 @@ class User < ActiveRecord::Base
 	# submits requests 
 	has_many :requests, dependent: :destroy
 
-	# has designs 
-	has_many :designs, dependent: :destroy
+	# DESIGNER has designs
+	   # These persist even if user destroyed 
+	has_many :designs
+
+	# DESIGNER has design assignments 
+	   # These persist even if user destroyed 
+	has_many :design_assigments
 
 	# security 
 	has_secure_password

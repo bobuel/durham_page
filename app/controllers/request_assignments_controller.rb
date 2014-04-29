@@ -10,7 +10,6 @@ class RequestAssignmentsController < ApplicationController
 		@request_assignment = RequestAssignment.new(request_assignment_params)
 		
 		if @request_assignment.save 
-			@request_assignment.set_price_cents_when_requested(Plant.find(params[:request_assignment][:request_plant_id]).price_cents)
 			@request = Request.find(params[:request_id])
 			redirect_to [@request, @request_assignment], notice: "Created Successfully"
 		else

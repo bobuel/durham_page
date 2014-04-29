@@ -33,7 +33,7 @@ class TagAssignmentsController < ApplicationController
 			@tag = Tag.find(params[:tag_id])
 			redirect_to [@tag, @tag_assignment], notice: "Update Successful"
 		else
-			redirect_to @tag,_assignment notice: "Update Unsuccessful"
+			redirect_to @tag,_assignment, notice: "Update Unsuccessful"
 		end
 	end
 
