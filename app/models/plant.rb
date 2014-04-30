@@ -15,13 +15,13 @@ class Plant < ActiveRecord::Base
 	validates :description, presence: true
 	
     validates :length_ft, presence: true, numericality: {only_integer: true, greater_than: 0 }
-    validates :length_inch, numericality: {only_integer: true, greater_than: 0, less_than: 13 }
+    validates :length_inch, numericality: {only_integer: true, greater_than: 0, less_than: 13 }, allow_blank: true
 
     validates :width_ft, presence: true, numericality: {only_integer: true, greater_than: 0 }
-    validates :width_inch, numericality: {only_integer: true, greater_than: 0, less_than: 13 }
+    validates :width_inch, numericality: {only_integer: true, greater_than: 0, less_than: 13 }, allow_blank: true
 
     validates :height_ft, presence: true, numericality: {only_integer: true, greater_than: 0 }
-    validates :height_inch, numericality: {only_integer: true, greater_than: 0, less_than: 13 }
+    validates :height_inch, numericality: {only_integer: true, greater_than: 0, less_than: 13 }, allow_blank: true
 
 
 end

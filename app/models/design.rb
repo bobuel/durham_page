@@ -9,31 +9,28 @@ class Design < ActiveRecord::Base
 	has_many :design_plants, class_name: 'Plants', through: :design_assignments
 	has_many :design_planters, class_name: 'Planters', through: :design_assignments 
 
-
 	def toggle_reviewed
 		self.reviewed = true
-		if save
-			true
-		else
-			false
-		end
+		save_model
 	end 		
 
 	def toggle_accepted
 		self.accepted = true
-		if save
-			true
-		else
-			false
-		end
+		save_model
 	end 
 
 	def toggle_active 
 		self.active = true 
-		if save
-			true
-		else
-			false
-		end
+		save_model
 	end 
+
+	protected 
+
+		def save_model 
+			if save
+				true
+			else
+				false
+			end
+		end
 end

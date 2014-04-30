@@ -51,7 +51,7 @@ class PlantersController < ApplicationController
 	private 
 
 		def planter_params
-			params.require(:planter).permit(:name, :length_ft, :length_inch, :width_ft, :width_inch, :height_ft, :height_inch, :depth_ft, :depth_inch, {tag_ids: []})
+			params.require(:planter).permit(:name, :length_ft, :length_inch, :width_ft, :width_inch, :height_ft, :height_inch, :depth_ft, :depth_inch, {tag_ids: []}, :description, :price_cents)
 		end
 
 end

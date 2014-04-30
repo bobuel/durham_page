@@ -3,7 +3,6 @@ class RequestAssignmentsController < ApplicationController
 
 	def new 
 		@request_assignment = RequestAssignment.new(request_id: params[:request_id])
-		@requests = Request.find(params[:request_id])
 	end
 
 	def create 
@@ -48,9 +47,12 @@ class RequestAssignmentsController < ApplicationController
 
 	def plant_request_assignment
 		@request = current_user.requests.first
-		@plant = Plant.find(params[:plant_id])
-		@request_assignment = RequestAssignment.new
-		render 'new'
+		if @request.blank?
+			redirect_to new_user_request_path(current_user), notice: 'Create a Request first!'
+		else
+			@request_assignment = RequestAssignment.new(request_id: @request.id, request_plant_id: params[:request_plant_id])
+			render 'new'
+		end
 	end
 
 

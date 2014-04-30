@@ -1,5 +1,4 @@
 class Request < ActiveRecord::Base
-
 	# made by user 
 	belongs_to :user
 	belongs_to :space 
@@ -9,12 +8,14 @@ class Request < ActiveRecord::Base
 	has_many :request_plants, class_name: 'Plant', through: :request_assignments
 
 	# designs are made from requests 
-	has_many :designs 
+	has_many :designs, dependent: :destroy
 
 	# validations
 	validates :user_id, presence: true 
 	validates :space_id, presence: true 
 	validates :description, presence: true
+
+	scope :all_submitted, -> {where(submitted: true)}
 	
 	def toggle_submitted
 		self.submitted = true

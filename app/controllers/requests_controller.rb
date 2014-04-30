@@ -87,7 +87,7 @@ class RequestsController < ApplicationController
 	def new_request_from_tag
 		@tag = Tag.find(params[:tag_id])
 		@request_plants = @tag.plants
-		@request = Request.new
+		@request = Request.new(request_plants: @request_plants, description: "Request from Tag: #{@tag.name}")
 		render 'new'
 	end
 

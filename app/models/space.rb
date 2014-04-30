@@ -12,14 +12,15 @@ class Space < ActiveRecord::Base
     validates :name, presence: true
     
     validates :length_ft, presence: true, numericality: {only_integer: true, greater_than: 0 }
-    validates :length_inch, numericality: {only_integer: true, greater_than: 0, less_than: 13 }
+    validates :length_inch, numericality: {only_integer: true, greater_than_or_equal_to: 0, less_than: 13 }, allow_blank: true 
 
     validates :width_ft, presence: true, numericality: {only_integer: true, greater_than: 0 }
-    validates :width_inch, numericality: {only_integer: true, greater_than: 0, less_than: 13 }
+    validates :width_inch, numericality: {only_integer: true, greater_than_or_equal_to: 0, less_than: 13 }, allow_blank: true 
 
     validates :height_ft, presence: true, numericality: {only_integer: true, greater_than: 0 }
-    validates :height_inch, numericality: {only_integer: true, greater_than: 0, less_than: 13 }
+    validates :height_inch, numericality: {only_integer: true, greater_than_or_equal_to: 0, less_than: 13 }, allow_blank: true 
 
     validates :floor, presence: true 
     validates :description, presence: true
+
 end

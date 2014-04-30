@@ -1,12 +1,8 @@
-<%= form_for [current_user, @design] do |f| %> 
+<%= form_for @design do |f| %> 
 	<%= f.error_messages %>
 	<p>
 		<%= f.label :request %>
-		<%= f.collection_select(:request_id, Request.all, :id, :description, {}, {multiple: false}) %> 
-	</p>
-	<p>
-		<%= f.label :space %>
-		<%= f.collection_select(:space_id, Space.all, :id, :description, {}, {multiple: false}) %> 
+		<%= f.collection_select(:request_id, Request.all_submitted, :id, :description, {}, {multiple: false}) %> 
 	</p>
 	<p>
 		<%= f.label :description %>

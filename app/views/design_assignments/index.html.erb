@@ -11,14 +11,18 @@
 		<th> Comments </th> 
 	</tr>
 
-	<% @design_assigments.each do |design_assignment| %>
-	<tr>
-		<td> <%= design_assignment.design_id %> </td>
-		<td> <%= design_assignment.design_plant_id %> </td>
-		<td> <%= design_assignment.design_planter_id %> </td>
-		<td> <%= design_assignment.included %> </td>
-		<td> <%= design_assignment.quantity %> </td>
-		<td> <%= design_assignment.description %> </td>
-		<td> <%= design_assignment.comments %> </td>
-	</tr>
-<% end %>
+	<% @design_assignments.each do |design_assignment| %>
+		<tr>
+			<td> <%= design_assignment.design_id %> </td>
+			<td> <%= design_assignment.design_plant_id %> </td>
+			<td> <%= design_assignment.design_planter_id %> </td>
+			<td> <%= design_assignment.included %> </td>
+			<td> <%= design_assignment.quantity %> </td>
+			<td> <%= design_assignment.description %> </td>
+			<td> <%= design_assignment.comments %> </td>
+			<td> <%= link_to "Show", design_design_assignment_path(@design, design_assignment.id) %> </td>
+		</tr>
+	<% end %>
+</table> 
+
+<%= render 'design_assignment_links' %> 
